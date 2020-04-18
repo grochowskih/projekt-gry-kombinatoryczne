@@ -1,0 +1,1 @@
+#TODO Funkcje odpowiadające za obliczenia matematyczne
