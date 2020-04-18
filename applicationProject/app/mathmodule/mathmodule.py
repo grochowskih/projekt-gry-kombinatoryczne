@@ -10,3 +10,10 @@ def create_all_series(n, k):
                 series.remove(ser)
                 break
     return series
+
+
+def series_include_element(el, series):
+    result = [ser for ser in series if el in ser]
+    return result
+
+
