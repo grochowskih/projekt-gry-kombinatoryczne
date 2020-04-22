@@ -16,4 +16,7 @@ def series_include_element(el, series):
     result = [ser for ser in series if el in ser]
     return result
 
+#Pokazuje Gita
+
+
 
