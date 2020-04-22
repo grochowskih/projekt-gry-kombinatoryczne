@@ -10,6 +10,6 @@ class EgoisticComputerPlayer(ComputerPlayer):
     # TODO Implementacja wyboru par, kolorowania itp. w strategii egoistycznej
     def __init__():
 
-class EgoisticComputerPlayer(ComputerPlayer):
+class AttackingComputerPlayer(ComputerPlayer):
     # TODO Implementacja wyboru par, kolorowania itp. w strategii atakującej
     def __init__():
