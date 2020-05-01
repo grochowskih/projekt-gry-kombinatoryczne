@@ -11,7 +11,6 @@ def create_all_series(n, k):
                 break
     return series
 
-
 def series_include_element(el, series):
     result = [ser for ser in series if el in ser]
     return result
@@ -45,7 +44,7 @@ def series_one_colour(n, k, dict, players_color):
 
 def choose_2_numbers(n, k, dict, players_color):
     lista = values_of_points(n, k, dict, players_color)
-    print(lista)
+    # print(lista)
     if len(lista) < 2:
         print('Została tylko jedna liczba')
         number = random.choice(list(lista))
