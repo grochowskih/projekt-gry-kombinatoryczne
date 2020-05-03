@@ -42,8 +42,8 @@ def series_one_colour(n, k, dict, players_color):
                 return 1
     return 0
 
-def choose_2_numbers(n, k, dict, players_color):
-    lista = values_of_points(n, k, dict, players_color)
+def choose_2_numbers(n, k, dict, players_color, value_color):
+    lista = values_of_points(n, k, dict, value_color)
     # print(lista)
     if len(lista) < 2:
         print('Została tylko jedna liczba')

@@ -35,13 +35,13 @@ class RandomComputerPlayer(ComputerPlayer):
 class EgoisticComputerPlayer(ComputerPlayer):
     # TODO Implementacja wyboru par, kolorowania itp. w strategii egoistycznej
     def choose_two(self):
-        return choose_2_numbers(self.n, self.k, self.dict, self.color)
+        return choose_2_numbers(self.n, self.k, self.dict,EgoisticComputerPlayer.real_players_color(self), self.color)
     def color_one(self, first_number, second_number):
         return choose_from_2_numbers(self.n, self.k, self.dict, self.color, first_number, second_number)
 
 class DuelingComputerPlayer(ComputerPlayer):
     # TODO Implementacja wyboru par, kolorowania itp. w strategii atakującej
     def choose_two(self):
-        return choose_2_numbers(self.n, self.k, self.dict, DuelingComputerPlayer.real_players_color(self))
+        return choose_2_numbers(self.n, self.k, self.dict, DuelingComputerPlayer.real_players_color(self), DuelingComputerPlayer.real_players_color(self))
     def color_one(self, first_number, second_number):
         return choose_from_2_numbers(self.n, self.k, self.dict, DuelingComputerPlayer.real_players_color(self), first_number, second_number)
