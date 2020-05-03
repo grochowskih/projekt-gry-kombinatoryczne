@@ -29,6 +29,12 @@ print("Wybierz swojego przeciwnika. \n"
       "Wpisz 2, jeśli Twoim przeciwnikiem ma być gracz kierujący się wyłącznie swoim własnym dobrem. \n"
       "Wpisz 3, jeśli pragniesz zmierzyć się z kimś, kto nie unika walki.")
 opponent = int(input("Wybierz swojego przeciwnika: "))
+while opponent!=1 and opponent!=2 and opponent!=3:
+    print("Podales blednie rodzaj przeciwnika.\n"
+          "Wpisz 1, jeśli chcesz, by Twój rywal wszelkich wyborów dokonywał losowo. \n"
+          "Wpisz 2, jeśli Twoim przeciwnikiem ma być gracz kierujący się wyłącznie swoim własnym dobrem. \n"
+          "Wpisz 3, jeśli pragniesz zmierzyć się z kimś, kto nie unika walki.")
+    opponent = int(input("Wybierz swojego przeciwnika: "))
 Player = RealPlayer(dict, color, n)
 Computer = ComputerPlayer(dict, n, k, computer_color)
 if opponent == 1:
@@ -45,7 +51,13 @@ if color == 2:
     SecondPlayer = Player
 
 while len(without_color(dict, n)) > 0:
-    print(dict.items())
+    for k, v in dict.items():
+        if v==0:
+            print(k)
+        elif v==1:
+            print('\033[1;34;40m'+str(k)+'\033[0m')
+        elif v==2:
+            print('\033[1;31;40m'+str(k)+'\033[0m')
     if len(without_color(dict, n)) == 1:
         print("Liczba",without_color(dict,n)[0],"została automatycznie pokolorowana na niebiesko.")
         dict[without_color(dict,n)[0]] = 1
@@ -59,7 +71,13 @@ while len(without_color(dict, n)) > 0:
         else:
             print("Niestety, komputer Cię pokonał :(")
         break
-    print(dict.items())
+    for k, v in dict.items():
+        if v == 0:
+            print(k)
+        elif v == 1:
+            print('\033[1;34;40m' + str(k)+'\033[0m')
+        elif v == 2:
+            print('\033[1;31;40m' + str(k)+'\033[0m')
     if len(without_color(dict, n)) == 1:
         print("Liczba", without_color(dict, n)[0], "została automatycznie pokolorowana na czerwono.")
         dict[without_color(dict, n)[0]] = 2
@@ -74,6 +92,12 @@ while len(without_color(dict, n)) > 0:
             print("Niestety, komputer Cię pokonał :(")
         break
 
-print(dict.items())
+for k, v in dict.items():
+    if v == 0:
+        print(k)
+    elif v == 1:
+        print('\033[1;34;40m' + str(k)+'\033[0m')
+    elif v == 2:
+        print('\033[1;31;40m' + str(k)+'\033[0m')
 if len(without_color(dict, n)) == 0:
     print("Nikomu nie udało się wygrać :( Spróbuj jeszcze raz!")
