@@ -65,14 +65,13 @@ while len(without_color(dict, n)) > 0:
         elif v==2:
             print("Liczba: "+ str(k) +" Kolor: Czerwony")
     if len(without_color(dict, n)) == 1:
-        print("Liczba",without_color(dict,n)[0],"została automatycznie pokolorowana na niebiesko.")
+        print("Liczba",without_color(dict,n)[0],"została automatycznie pokolorowana na czerwono.")
         dict[without_color(dict,n)[0]] = 2
         break
     player1_first_choice = FirstPlayer.choose_two()
     player2_first_choice = SecondPlayer.color_one(player1_first_choice[0], player1_first_choice[1])
     dict[player2_first_choice] = SecondPlayer.color
     if series_one_colour(n, k, dict, SecondPlayer.color) == 1:
-        if SecondPlayer.check_humanity() == 1:
             break
     for k, v in dict.items():
         if v == 0:
@@ -82,7 +81,7 @@ while len(without_color(dict, n)) > 0:
         elif v == 2:
             print("Liczba: " + str(k) + " Kolor: Czerwony")
     if len(without_color(dict, n)) == 1:
-        print("Liczba", without_color(dict, n)[0], "została automatycznie pokolorowana na czerwono.")
+        print("Liczba", without_color(dict, n)[0], "została automatycznie pokolorowana na niebiesko.")
         dict[without_color(dict, n)[0]] = 1
         break
     player2_second_choice = SecondPlayer.choose_two()
