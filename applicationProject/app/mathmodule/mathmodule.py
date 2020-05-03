@@ -101,5 +101,3 @@ def choose_from_2_numbers(n, k, dict, players_color, first_number, second_number
     else:
         return second_number
 
-
-

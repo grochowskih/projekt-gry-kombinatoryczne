@@ -57,13 +57,13 @@ if color == 2:
     SecondPlayer = Player
 
 while len(without_color(dict, n)) > 0:
-    for k, v in dict.items():
+    for key, v in dict.items():
         if v==0:
-            print("Liczba: "+ str(k) +" Kolor: ")
+            print("Liczba: "+ str(key) +" Kolor: ")
         elif v==1:
-            print("Liczba: "+ str(k) +" Kolor: Niebieski")
+            print("Liczba: "+ str(key) +" Kolor: Niebieski")
         elif v==2:
-            print("Liczba: "+ str(k) +" Kolor: Czerwony")
+            print("Liczba: "+ str(key) +" Kolor: Czerwony")
     if len(without_color(dict, n)) == 1:
         print("Liczba",without_color(dict,n)[0],"została automatycznie pokolorowana na czerwono.")
         dict[without_color(dict,n)[0]] = 2
@@ -73,13 +73,13 @@ while len(without_color(dict, n)) > 0:
     dict[player2_first_choice] = SecondPlayer.color
     if series_one_colour(n, k, dict, SecondPlayer.color) == 1:
         break
-    for k, v in dict.items():
+    for key, v in dict.items():
         if v == 0:
-            print("Liczba: " + str(k) + " Kolor: ")
+            print("Liczba: " + str(key) + " Kolor: ")
         elif v == 1:
-            print("Liczba: " + str(k) + " Kolor: Niebieski")
+            print("Liczba: " + str(key) + " Kolor: Niebieski")
         elif v == 2:
-            print("Liczba: " + str(k) + " Kolor: Czerwony")
+            print("Liczba: " + str(key) + " Kolor: Czerwony")
     if len(without_color(dict, n)) == 1:
         print("Liczba", without_color(dict, n)[0], "została automatycznie pokolorowana na niebiesko.")
         dict[without_color(dict, n)[0]] = 1
@@ -90,13 +90,13 @@ while len(without_color(dict, n)) > 0:
     if series_one_colour(n, k, dict, FirstPlayer.color) == 1:
         break
 
-for k, v in dict.items():
+for key, v in dict.items():
     if v == 0:
-        print("Liczba: " + str(k) + " Kolor: ")
+        print("Liczba: " + str(key) + " Kolor: ")
     elif v == 1:
-        print("Liczba: " + str(k) + " Kolor: Niebieski")
+        print("Liczba: " + str(key) + " Kolor: Niebieski")
     elif v == 2:
-        print("Liczba: " + str(k) + " Kolor: Czerwony")
+        print("Liczba: " + str(key) + " Kolor: Czerwony")
 
 if series_one_colour(n, k, dict, FirstPlayer.color) == 1:
     if FirstPlayer.check_humanity() == 1:
