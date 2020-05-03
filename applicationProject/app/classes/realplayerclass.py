@@ -1,4 +1,4 @@
-from app.mathmodule.mathmodule import choose_2_numbers, choose_from_2_numbers, without_color
+from mathmodule.mathmodule import choose_2_numbers, choose_from_2_numbers, without_color
 
 class RealPlayer:
     #TODO: Pole przechowujące plansze gracza, kolor gracza, wybór koloru, wybór dwóch dla kompa itp.

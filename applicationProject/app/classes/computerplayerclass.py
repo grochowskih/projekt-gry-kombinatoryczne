@@ -1,5 +1,5 @@
-from app.mathmodule.mathmodule import without_color, choose_from_2_numbers, choose_2_numbers
-from app.classes.realplayerclass import RealPlayer
+from mathmodule.mathmodule import without_color, choose_from_2_numbers, choose_2_numbers
+from classes.realplayerclass import RealPlayer
 import random
 
 class ComputerPlayer:

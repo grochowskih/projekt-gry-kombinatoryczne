@@ -1,9 +1,15 @@
-from app.classes.computerplayerclass import ComputerPlayer, RandomComputerPlayer, EgoisticComputerPlayer, \
+from classes.computerplayerclass import ComputerPlayer, RandomComputerPlayer, EgoisticComputerPlayer, \
     DuelingComputerPlayer
-from app.classes.realplayerclass import RealPlayer
+from classes.realplayerclass import RealPlayer
 #from app.classes.gameplayclass import Gameplay
-from app.mathmodule.mathmodule import series_one_colour, without_color
+from mathmodule.mathmodule import series_one_colour, without_color
 
+print("Gra w Wybieranie Szemerediego - Gracz vs Komputer \n")
+print("Wersja BETA Aplikacji - 3.05")
+print("Jakub Bezubik, Hubert Grochowski, Tomasz Kapelka")
+print("Do dodania instrukcja, mozliwosc zapetlania rozgrywki, sformatowanie wygladu rozgrywki")
+print("Do poprawienia ewentualne bledy w kodzie, ktore wyjda w trakcie testow do koncowej wersji aplikacji oraz ulozenie kodu")
+print("------------")
 n = int(input("Ile elementów ma mieć plansza? "))
 k = int(input("Jak długie mają być ciągi? "))
 # Game = Gameplay(n, k)
@@ -53,11 +59,11 @@ if color == 2:
 while len(without_color(dict, n)) > 0:
     for k, v in dict.items():
         if v==0:
-            print(k)
+            print("Liczba: "+ str(k) +" Kolor: ")
         elif v==1:
-            print('\033[1;34;40m'+str(k)+'\033[0m')
+            print("Liczba: "+ str(k) +" Kolor: Niebieski")
         elif v==2:
-            print('\033[1;31;40m'+str(k)+'\033[0m')
+            print("Liczba: "+ str(k) +" Kolor: Czerwony")
     if len(without_color(dict, n)) == 1:
         print("Liczba",without_color(dict,n)[0],"została automatycznie pokolorowana na niebiesko.")
         dict[without_color(dict,n)[0]] = 1
@@ -68,16 +74,18 @@ while len(without_color(dict, n)) > 0:
     if series_one_colour(n, k, dict, SecondPlayer.color) == 1:
         if SecondPlayer.check_humanity() == 1:
             print("Brawo! Tryumf człowieka nad maszyną!")
+            final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
         else:
             print("Niestety, komputer Cię pokonał :(")
+            final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
         break
     for k, v in dict.items():
         if v == 0:
-            print(k)
+            print("Liczba: " + str(k) + " Kolor: ")
         elif v == 1:
-            print('\033[1;34;40m' + str(k)+'\033[0m')
+            print("Liczba: " + str(k) + " Kolor: Niebieski")
         elif v == 2:
-            print('\033[1;31;40m' + str(k)+'\033[0m')
+            print("Liczba: " + str(k) + " Kolor: Czerwony")
     if len(without_color(dict, n)) == 1:
         print("Liczba", without_color(dict, n)[0], "została automatycznie pokolorowana na czerwono.")
         dict[without_color(dict, n)[0]] = 2
@@ -88,16 +96,19 @@ while len(without_color(dict, n)) > 0:
     if series_one_colour(n, k, dict, FirstPlayer.color) == 1:
         if FirstPlayer.check_humanity() == 1:
             print("Brawo! Tryumf człowieka nad maszyną!")
+            final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
         else:
             print("Niestety, komputer Cię pokonał :(")
+            final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
         break
 
 for k, v in dict.items():
     if v == 0:
-        print(k)
+        print("Liczba: " + str(k) + " Kolor: ")
     elif v == 1:
-        print('\033[1;34;40m' + str(k)+'\033[0m')
+        print("Liczba: " + str(k) + " Kolor: Niebieski")
     elif v == 2:
-        print('\033[1;31;40m' + str(k)+'\033[0m')
+        print("Liczba: " + str(k) + " Kolor: Czerwony")
 if len(without_color(dict, n)) == 0:
     print("Nikomu nie udało się wygrać :( Spróbuj jeszcze raz!")
+    final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
