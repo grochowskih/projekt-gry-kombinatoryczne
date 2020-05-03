@@ -11,7 +11,12 @@ print("Do dodania instrukcja, mozliwosc zapetlania rozgrywki, sformatowanie wygl
 print("Do poprawienia ewentualne bledy w kodzie, ktore wyjda w trakcie testow do koncowej wersji aplikacji oraz ulozenie kodu")
 print("------------")
 n = int(input("Ile elementów ma mieć plansza? "))
+while n < 3:
+    n = int(input("Za mała długość planszy. Podaj większą liczbę. "))
 k = int(input("Jak długie mają być ciągi? "))
+while k < 3 or k > n:
+    k = int(input("Długość ciągu jest zła. Podaj inną długość. "))
+
 # Game = Gameplay(n, k)
 
 dict = {}

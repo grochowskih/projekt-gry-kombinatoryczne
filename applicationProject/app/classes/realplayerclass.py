@@ -12,10 +12,14 @@ class RealPlayer:
 
     def choose_two(self):
         first_choice = int(input("Wybierz pierwszą liczbę dla komputera: "))
+        while first_choice > self.n or first_choice < 1:
+            first_choice = int(input("Dana liczba nie mieści się w przedziale! Podaj inną liczbę. "))
         while self.dict[first_choice] != 0:
             print("Ta liczba jest już pokolorowana!")
             first_choice = int(input("Wybierz pierwszą liczbę dla komputera: "))
         second_choice = int(input("Wybierz drugą liczbę dla komputera: "))
+        while second_choice > self.n or second_choice < 1:
+            second_choice = int(input("Dana liczba nie mieści się w przedziale! Podaj inną liczbę. "))
         while self.dict[second_choice] != 0:
             print("Ta liczba jest już pokolorowana!")
             second_choice = int(input("Wybierz drugą liczbę dla komputera: "))
