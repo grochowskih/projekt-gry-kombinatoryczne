@@ -66,19 +66,14 @@ while len(without_color(dict, n)) > 0:
             print("Liczba: "+ str(k) +" Kolor: Czerwony")
     if len(without_color(dict, n)) == 1:
         print("Liczba",without_color(dict,n)[0],"została automatycznie pokolorowana na niebiesko.")
-        dict[without_color(dict,n)[0]] = 1
+        dict[without_color(dict,n)[0]] = 2
         break
     player1_first_choice = FirstPlayer.choose_two()
     player2_first_choice = SecondPlayer.color_one(player1_first_choice[0], player1_first_choice[1])
     dict[player2_first_choice] = SecondPlayer.color
     if series_one_colour(n, k, dict, SecondPlayer.color) == 1:
         if SecondPlayer.check_humanity() == 1:
-            print("Brawo! Tryumf człowieka nad maszyną!")
-            final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
-        else:
-            print("Niestety, komputer Cię pokonał :(")
-            final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
-        break
+            break
     for k, v in dict.items():
         if v == 0:
             print("Liczba: " + str(k) + " Kolor: ")
@@ -88,18 +83,12 @@ while len(without_color(dict, n)) > 0:
             print("Liczba: " + str(k) + " Kolor: Czerwony")
     if len(without_color(dict, n)) == 1:
         print("Liczba", without_color(dict, n)[0], "została automatycznie pokolorowana na czerwono.")
-        dict[without_color(dict, n)[0]] = 2
+        dict[without_color(dict, n)[0]] = 1
         break
     player2_second_choice = SecondPlayer.choose_two()
     player1_second_choice = FirstPlayer.color_one(player2_second_choice[0], player2_second_choice[1])
     dict[player1_second_choice] = FirstPlayer.color
     if series_one_colour(n, k, dict, FirstPlayer.color) == 1:
-        if FirstPlayer.check_humanity() == 1:
-            print("Brawo! Tryumf człowieka nad maszyną!")
-            final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
-        else:
-            print("Niestety, komputer Cię pokonał :(")
-            final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
         break
 
 for k, v in dict.items():
@@ -109,6 +98,23 @@ for k, v in dict.items():
         print("Liczba: " + str(k) + " Kolor: Niebieski")
     elif v == 2:
         print("Liczba: " + str(k) + " Kolor: Czerwony")
-if len(without_color(dict, n)) == 0:
+
+if series_one_colour(n, k, dict, FirstPlayer.color) == 1:
+    if FirstPlayer.check_humanity() == 1:
+        print("Brawo! Tryumf człowieka nad maszyną!")
+        final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
+    else:
+        print("Niestety, komputer Cię pokonał :(")
+        final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
+
+if series_one_colour(n, k, dict, SecondPlayer.color) == 1:
+    if SecondPlayer.check_humanity() == 1:
+        print("Brawo! Tryumf człowieka nad maszyną!")
+        final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
+    else:
+        print("Niestety, komputer Cię pokonał :(")
+        final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
+
+if series_one_colour(n, k, dict, FirstPlayer.color) == 0 and series_one_colour(n, k, dict, SecondPlayer.color) == 0:
     print("Nikomu nie udało się wygrać :( Spróbuj jeszcze raz!")
     final = input("Naciśnij cokolwiek, aby zakończyć rozgrywkę.")
