@@ -72,7 +72,7 @@ while len(without_color(dict, n)) > 0:
     player2_first_choice = SecondPlayer.color_one(player1_first_choice[0], player1_first_choice[1])
     dict[player2_first_choice] = SecondPlayer.color
     if series_one_colour(n, k, dict, SecondPlayer.color) == 1:
-            break
+        break
     for k, v in dict.items():
         if v == 0:
             print("Liczba: " + str(k) + " Kolor: ")
