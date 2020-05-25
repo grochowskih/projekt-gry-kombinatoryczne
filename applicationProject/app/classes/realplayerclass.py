@@ -2,8 +2,8 @@ from mathmodule.mathmodule import choose_2_numbers, choose_from_2_numbers, witho
 
 class RealPlayer:
     #TODO: Pole przechowujące plansze gracza, kolor gracza, wybór koloru, wybór dwóch dla kompa itp.
-    def __init__(self, dict, color, n):
-        self.dict = dict
+    def __init__(self, d, color, n):
+        self.d = d
         self.color = color
         self.n = n
 
@@ -14,13 +14,13 @@ class RealPlayer:
         first_choice = int(input("Wybierz pierwszą liczbę dla komputera: "))
         while first_choice > self.n or first_choice < 1:
             first_choice = int(input("Dana liczba nie mieści się w przedziale! Podaj inną liczbę. "))
-        while self.dict[first_choice] != 0:
+        while self.d[first_choice] != 0:
             print("Ta liczba jest już pokolorowana!")
             first_choice = int(input("Wybierz pierwszą liczbę dla komputera: "))
         second_choice = int(input("Wybierz drugą liczbę dla komputera: "))
         while second_choice > self.n or second_choice < 1:
             second_choice = int(input("Dana liczba nie mieści się w przedziale! Podaj inną liczbę. "))
-        while self.dict[second_choice] != 0:
+        while self.d[second_choice] != 0:
             print("Ta liczba jest już pokolorowana!")
             second_choice = int(input("Wybierz drugą liczbę dla komputera: "))
         while second_choice == first_choice:

@@ -4,8 +4,8 @@ import random
 
 class ComputerPlayer:
     #TODO Pole przechowujące plansze kompa, kolor kompa, "nazwę" kompa, polimorfizmy do klas dziedziczących
-    def __init__(self, dict, color, n, k):
-        self.dict = dict
+    def __init__(self, d, color, n, k):
+        self.d = d
         self.color = color
         self.n = n
         self.k = k
@@ -27,7 +27,7 @@ class ComputerPlayer:
 class RandomComputerPlayer(ComputerPlayer):
     #TODO Implementacja wyboru par, kolorowania itp. w strategii losowej
     def choose_two(self):
-        return random.sample(without_color(self.dict, self.n), 2)
+        return random.sample(without_color(self.d, self.n), 2)
     def color_one(self, first_number, second_number):
         list = [first_number, second_number]
         return random.choice(list)
@@ -35,13 +35,13 @@ class RandomComputerPlayer(ComputerPlayer):
 class EgoisticComputerPlayer(ComputerPlayer):
     # TODO Implementacja wyboru par, kolorowania itp. w strategii egoistycznej
     def choose_two(self):
-        return choose_2_numbers(self.n, self.k, self.dict, EgoisticComputerPlayer.real_players_color(self), self.color)
+        return choose_2_numbers(self.n, self.k, self.d, EgoisticComputerPlayer.real_players_color(self), self.color)
     def color_one(self, first_number, second_number):
-        return choose_from_2_numbers(self.n, self.k, self.dict, self.color, first_number, second_number)
+        return choose_from_2_numbers(self.n, self.k, self.d, self.color, first_number, second_number)
 
 class DuelingComputerPlayer(ComputerPlayer):
     # TODO Implementacja wyboru par, kolorowania itp. w strategii atakującej
     def choose_two(self):
-        return choose_2_numbers(self.n, self.k, self.dict, DuelingComputerPlayer.real_players_color(self), DuelingComputerPlayer.real_players_color(self))
+        return choose_2_numbers(self.n, self.k, self.d, DuelingComputerPlayer.real_players_color(self), DuelingComputerPlayer.real_players_color(self))
     def color_one(self, first_number, second_number):
-        return choose_from_2_numbers(self.n, self.k, self.dict, DuelingComputerPlayer.real_players_color(self), first_number, second_number)
+        return choose_from_2_numbers(self.n, self.k, self.d, DuelingComputerPlayer.real_players_color(self), first_number, second_number)
