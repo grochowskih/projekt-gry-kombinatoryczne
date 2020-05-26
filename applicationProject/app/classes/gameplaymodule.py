@@ -1,6 +1,6 @@
 from classes.computerplayerclass import ComputerPlayer, RandomComputerPlayer, EgoisticComputerPlayer, \
     DuelingComputerPlayer
-from mathmodule.mathmodule import series_one_colour, without_color
+from mathmodule.mathmodule import series_one_colour, without_color, is_int
 from colorama import Fore, Style, init
 #Pakiet colorama jest doinstalowany tak, aby exe odpalal sie bez problemu.
 #W przypadku, gdy nie chcemy instalowac pakietu colorama wystarczy zakomentowac print_game
@@ -55,11 +55,14 @@ def choose_color():
     print("Witaj graczu. Wybierz swój kolor. \n"
           "Wpisz 1, jeśli wolisz niebieski - wtedy to do Ciebie będzie należeć pierwszy ruch. \n"
           "Wpisz 2, jeśli decydujesz się na czerwony - wówczas to komputer rozpocznie rozgrywkę.")
-    color = int(input("A więc wybierasz: "))
-    while color != 1 and color != 2:
+    color = input("A więc wybierasz: ")
+    while not is_int(color):
+        color = input("Ma być podana liczba! Podaj jeszcze raz. ")
+    while int(color) != 1 and int(color) != 2:
         print("To nie jest jedna z oczekiwanych liczb. Wybierz jeszcze raz: ")
-        color = int(input("A więc wybierasz: "))
-    return color
+        while not is_int(color):
+            color = input("Ma być podana liczba! Podaj jeszcze raz. ")
+    return int(color)
 
 
 def define_computer(opponent, computer_color, n, k, d):
@@ -73,17 +76,25 @@ def define_computer(opponent, computer_color, n, k, d):
 
 
 def set_n():
-    n = int(input("Ile elementów ma mieć plansza? "))
-    while n < 3:
-        n = int(input("Za mała długość planszy. Podaj większą liczbę. "))
-    return n
+    n = input("Ile elementów ma mieć plansza? ")
+    while not is_int(n):
+        n = input("Ma być liczba! Podaj jeszcze raz. ")
+    while int(n) < 3:
+        n = input("Za mała długość planszy. Podaj większą liczbę. ")
+        while not is_int(n):
+            n = input("Ma być liczba! Podaj jeszcze raz. ")
+    return int(n)
 
 
 def set_k(n):
-    k = int(input("Jak długie mają być ciągi? "))
-    while k < 3 or k > n:
-        k = int(input("Długość ciągu jest zła. Podaj inną długość. "))
-    return k
+    k = input("Jak długie mają być ciągi? ")
+    while not is_int(k):
+        k = input("Ma być liczba! Podaj jeszcze raz. ")
+    while int(k) < 3 or int(k) > n:
+        k = input("Długość ciągu jest zła. Podaj inną długość. ")
+        while not is_int(k):
+            k = input("Ma być liczba! Podaj jeszcze raz. ")
+    return int(k)
 
 
 def set_computer_color(color):
@@ -94,27 +105,27 @@ def set_computer_color(color):
     return computer_color
 
 
-def gameplay(d, n, k, FirstPlayer, SecondPlayer):
+def gameplay(d, n, k, first_player, second_player):
     while len(without_color(d, n)) > 0:
         print_game(d)
         if len(without_color(d, n)) == 1:
             print("Liczba",without_color(d,n)[0],"została automatycznie pokolorowana na czerwono.")
             d[without_color(d,n)[0]] = 2
             break
-        player1_first_choice = FirstPlayer.choose_two()
-        player2_first_choice = SecondPlayer.color_one(player1_first_choice[0], player1_first_choice[1])
-        d[player2_first_choice] = SecondPlayer.color
-        if series_one_colour(n, k, d, SecondPlayer.color) == 1:
+        player1_first_choice = first_player.choose_two()
+        player2_first_choice = second_player.color_one(player1_first_choice[0], player1_first_choice[1])
+        d[player2_first_choice] = second_player.color
+        if series_one_colour(n, k, d, second_player.color) == 1:
             break
         print_game(d)
         if len(without_color(d, n)) == 1:
             print("Liczba", without_color(d, n)[0], "została automatycznie pokolorowana na niebiesko.")
             d[without_color(d, n)[0]] = 1
             break
-        player2_second_choice = SecondPlayer.choose_two()
-        player1_second_choice = FirstPlayer.color_one(player2_second_choice[0], player2_second_choice[1])
-        d[player1_second_choice] = FirstPlayer.color
-        if series_one_colour(n, k, d, FirstPlayer.color) == 1:
+        player2_second_choice = second_player.choose_two()
+        player1_second_choice = first_player.color_one(player2_second_choice[0], player2_second_choice[1])
+        d[player1_second_choice] = first_player.color
+        if series_one_colour(n, k, d, first_player.color) == 1:
             break
 
 
