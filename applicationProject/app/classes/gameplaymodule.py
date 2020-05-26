@@ -38,19 +38,16 @@ def choose_opponent():
 
 
 def game_intro():
-    print("Gra w Wybieranie Szemerediego w tej wersji polega na rozgrywce dwóch graczy (A,B). Każdy z graczy ma \
-              przyporządkowany kolor.\
-              Planszą gry jest zbiór liczb [n], a celem jest utworzenie przez gracza ciagu arytmetycznego długości k w swoim kolorze. \
-              Gracz A podaje 2 liczby, z których gracz B wybiera jedną, którą koloruje na swój kolor. Następnie następuje zmiana ról. \
-              Jeżeli nikt z graczy nie stworzy takowego ciągu, to następuje remis.")
+    print("Gra w Wybieranie Szemerediego w tej wersji polega na rozgrywce dwóch graczy (A,B). Każdy z graczy ma przyporządkowany kolor.")
+    print("Planszą gry jest zbiór liczb [n], a celem jest utworzenie przez gracza ciagu arytmetycznego długości k w swoim kolorze.")
+    print("Gracz A podaje 2 liczby, z których gracz B wybiera jedną, którą koloruje na swój kolor. Następnie następuje zmiana ról.")
+    print("Jeżeli nikt z graczy nie stworzy takowego ciągu, to następuje remis.")
 
 
 def game_authors_and_title():
     print("Gra w Wybieranie Szemerediego - Gracz vs Komputer \n")
-    print("Wersja BETA Aplikacji - 3.05")
+    print("Wersja 1.0.0")
     print("Jakub Bezubik, Hubert Grochowski, Tomasz Kapelka")
-    print(
-        "Do poprawienia ewentualne bledy w kodzie, ktore wyjda w trakcie testow do koncowej wersji aplikacji oraz ulozenie kodu")
     print("------------")
 
 
@@ -125,24 +122,24 @@ def return_result(n, k, d, first_player, second_player):
     if series_one_colour(n, k, d, first_player.color) == 1:
         if first_player.check_humanity() == 1:
             print("Brawo! Tryumf człowieka nad maszyną!")
-            final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego."))
+            final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego. "))
             return final
         else:
             print("Niestety, komputer Cię pokonał :(")
-            final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego."))
+            final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego. "))
             return final
 
     if series_one_colour(n, k, d, second_player.color) == 1:
         if second_player.check_humanity() == 1:
             print("Brawo! Tryumf człowieka nad maszyną!")
-            final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego."))
+            final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego. "))
             return final
         else:
             print("Niestety, komputer Cię pokonał :(")
-            final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego."))
+            final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego. "))
             return final
 
     if series_one_colour(n, k, d, first_player.color) == 0 and series_one_colour(n, k, d, second_player.color) == 0:
         print("Nikomu nie udało się wygrać :( Spróbuj jeszcze raz!")
-        final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego."))
+        final = int(input("Naciśnij 0 i zaakceptuj, aby zagrać znowu. Aby skończyć rozgrywkę, zaakceptuj cokolwiek innego. "))
         return final

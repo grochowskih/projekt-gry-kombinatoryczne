@@ -11,7 +11,11 @@ import os
 #from app.classes.realplayerclass import RealPlayer
 
 game_authors_and_title()
-click = int(input("Jeżeli chcesz wyświetlić instrukcję, wpisz 0 i zaakceptuj. Jeżeli nie, zaakceptuj cokolwiek innego."))
+try:
+    click = int(input("Jeżeli chcesz wyświetlić instrukcję, wpisz 0 i zaakceptuj. Jeżeli nie, zaakceptuj cokolwiek innego. "))
+except:
+    click = 1
+
 if click == 0:
     game_intro()
 
@@ -40,5 +44,8 @@ while final == 0:
 
     gameplay(d, n, k, first_player, second_player)
     print_game(d)
-    final = return_result(n, k, d, first_player, second_player)
+    try:
+        final = return_result(n, k, d, first_player, second_player)
+    except:
+        final = 1
     os.system("cls")

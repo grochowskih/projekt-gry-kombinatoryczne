@@ -107,3 +107,10 @@ def choose_from_2_numbers(n, k, d, players_color, first_number, second_number):
     else:
         return second_number
 
+
+def is_int(number):
+    try:
+        int(number)
+        return True
+    except ValueError:
+        return False
