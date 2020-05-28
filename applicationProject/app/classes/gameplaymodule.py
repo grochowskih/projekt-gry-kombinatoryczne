@@ -6,6 +6,7 @@ from colorama import Fore, Style, init
 #W przypadku, gdy nie chcemy instalowac pakietu colorama wystarczy zakomentowac print_game
 #I odkomentowac druga wersje tej funkcji.
 
+
 def print_game(game):
     init(convert=True, autoreset=True)
     for key, v in game.items():
@@ -17,6 +18,7 @@ def print_game(game):
             print(Fore.RED + str(key), end=' ')
     print('\n', end='')
 
+
 '''def print_game(game):
     for key, v in game.items():
         if v == 0:
@@ -26,15 +28,20 @@ def print_game(game):
         elif v == 2:
             print("Liczba " + str(key) + " | Kolor: CZERWONY")'''
 
+
 def choose_opponent():
     print("Wybierz swojego przeciwnika. \n"
           "Wpisz 1, jeśli chcesz, by Twój rywal wszelkich wyborów dokonywał losowo. \n"
           "Wpisz 2, jeśli Twoim przeciwnikiem ma być gracz kierujący się wyłącznie swoim własnym dobrem. \n"
           "Wpisz 3, jeśli pragniesz zmierzyć się z kimś, kto nie unika walki.")
-    opponent = int(input("Wybierz swojego przeciwnika: "))
-    while opponent != 1 and opponent != 2 and opponent != 3:
-        opponent = choose_opponent()
-    return opponent
+    opponent = input("Wybierz swojego przeciwnika: ")
+    while not is_int(opponent):
+        opponent = input("Musisz podać liczbę! Podaj jeszcze raz swojego przeciwnika. ")
+    while int(opponent) != 1 and int(opponent) != 2 and int(opponent) != 3:
+        opponent = input("Przeciwnik to 1 lub 2 lub 3! Podaj jeszcze raz swojego przeciwnika. ")
+        while not is_int(opponent):
+            opponent = input("Musisz podać liczbę! Podaj jeszcze raz swojego przeciwnika. ")
+    return int(opponent)
 
 
 def game_intro():
@@ -59,7 +66,7 @@ def choose_color():
     while not is_int(color):
         color = input("Ma być podana liczba! Podaj jeszcze raz. ")
     while int(color) != 1 and int(color) != 2:
-        print("To nie jest jedna z oczekiwanych liczb. Wybierz jeszcze raz: ")
+        color = input("To nie jest jedna z oczekiwanych liczb. Wybierz jeszcze raz: ")
         while not is_int(color):
             color = input("Ma być podana liczba! Podaj jeszcze raz. ")
     return int(color)
